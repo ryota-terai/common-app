@@ -19,5 +19,12 @@
 *.tar.gz
 *.rar
 
+# Backup files
+*.bak
+
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/COMMONApp/target/
+/COMMONApp/COMMONApp-ejb/target/
+/COMMONApp/COMMONApp-web/target/
+/COMMONApp/COMMONApp-ear/target/
