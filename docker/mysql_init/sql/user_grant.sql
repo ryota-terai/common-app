@@ -1,0 +1,1 @@
+GRANT ALL ON GISApp.* TO 'payara'@'%';

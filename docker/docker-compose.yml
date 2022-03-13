@@ -1,0 +1,45 @@
+version: "3.9"
+services:
+  payara:
+    build:
+      context: ./payara
+      dockerfile: Dockerfile-payara-mysql
+    environment:
+      - JVM_ARGS=-Dlog4j2.configurationFile=/opt/payara/log4j2.xml
+#      - JVM_ARGS=-Djava.rmi.server.hostname=payara -Dcom.sun.management.jmxremote.rmi.port=12345 -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=12345 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.authenticate=false -Dlog4j2.configurationFile=/opt/payara/log4j2.xml
+#      - JVM_ARGS=-Djava.rmi.server.hostname=127.0.0.1 -Dcom.sun.management.jmxremote.rmi.port=12345 -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=12345 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.authenticate=false -Dlog4j2.configurationFile=/log4j2.xml
+#    volumes:
+#      - type: volume
+#        source: payaradata
+#        target: /opt/payara/appserver
+    ports:
+      - "14848:4848"
+      - "18080:8080"
+#      - "12345:12345"
+    networks:
+      payara_network:
+        aliases:
+          - payara
+    depends_on:
+      - mysql
+  mysql:
+    image:  mysql:8.0.22
+    environment:
+      MYSQL_ROOT_PASSWORD: foobar
+      MYSQL_DATABASE: COMMON
+      MYSQL_USER: payara
+      MYSQL_PASSWORD: foobar
+    volumes:
+      - ./mysql_init:/docker-entrypoint-initdb.d
+    ports: 
+     - "13306:3306"
+    networks:
+      payara_network:
+        aliases:
+          - mysql
+networks:
+  payara_network:
+#    external: true
+#    name: zabbix-docker_zbx_net_frontend
+#volumes:
+#  payaradata:
