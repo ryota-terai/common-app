@@ -28,3 +28,6 @@ hs_err_pid*
 /COMMONApp/COMMONApp-ejb/target/
 /COMMONApp/COMMONApp-web/target/
 /COMMONApp/COMMONApp-ear/target/
+/lib/Util/target/
+/lib/COMMONEntity/target/
+/lib/COMMONEntityUtil/target/

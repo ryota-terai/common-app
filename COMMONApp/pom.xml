@@ -83,5 +83,8 @@
         <module>COMMONApp-ear</module>
         <module>COMMONApp-ejb</module>
         <module>COMMONApp-web</module>
+        <module>../lib/Util</module>
+        <module>../lib/COMMONEntity</module>
+        <module>../lib/COMMONEntityUtil</module>
     </modules>
 </project>
