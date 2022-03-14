@@ -36,7 +36,12 @@ public class COMMONEntityUtil {
         }
 
         public static List<ObserverTarget> getOrderByUpdateTimeDesc(EntityManager em, String application, String module, String _class, String method) {
-            List<ObserverTarget> targets = em.createNativeQuery("SELECT * FROM OBSERVER_TARGET WHERE APPLICATION = ?1 AND MODULE = ?2 AND CLASS = ?3 AND METHOD = ?4 ORDER BY UPDATE_TIME DESC", ObserverTarget.class).setParameter(1, application).setParameter(2, module).setParameter(3, _class).setParameter(4, method).getResultList();
+            List<ObserverTarget> targets = em.createNativeQuery("SELECT * FROM OBSERVER_TARGET WHERE APPLICATION = ?1 AND MODULE = ?2 AND CLASS = ?3 AND METHOD = ?4 ORDER BY UPDATE_TIME DESC", ObserverTarget.class)
+                    .setParameter(1, application)
+                    .setParameter(2, module)
+                    .setParameter(3, _class)
+                    .setParameter(4, method)
+                    .getResultList();
             return targets;
         }
 

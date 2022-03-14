@@ -158,7 +158,7 @@ public class ObserverTarget implements Serializable {
 
     @Override
     public String toString() {
-        return "com.r_terai.java.commonentity.ObserverTarget[ id=" + id + " ]";
+        return "com.r_terai.java.ee.common.entity.ObserverTarget[ id=" + id + " ]";
     }
     
 }

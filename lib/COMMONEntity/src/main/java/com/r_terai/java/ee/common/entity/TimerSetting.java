@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "TimerSetting.findByApplication", query = "SELECT t FROM TimerSetting t WHERE t.application = :application"),
     @NamedQuery(name = "TimerSetting.findByModule", query = "SELECT t FROM TimerSetting t WHERE t.module = :module"),
     @NamedQuery(name = "TimerSetting.findByTimeout", query = "SELECT t FROM TimerSetting t WHERE t.timeout = :timeout"),
-    @NamedQuery(name = "TimerSetting.findByInterval", query = "SELECT t FROM TimerSetting t WHERE t.interval = :interval")})
+    @NamedQuery(name = "TimerSetting.findByIntervalTime", query = "SELECT t FROM TimerSetting t WHERE t.intervalTime = :intervalTime")})
 public class TimerSetting implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -54,8 +54,8 @@ public class TimerSetting implements Serializable {
     @Column(name = "TIMEOUT")
     private int timeout;
     @Basic(optional = false)
-    @Column(name = "INTERVAL")
-    private int interval;
+    @Column(name = "INTERVAL_TIME")
+    private int intervalTime;
 
     public TimerSetting() {
     }
@@ -64,13 +64,13 @@ public class TimerSetting implements Serializable {
         this.id = id;
     }
 
-    public TimerSetting(Integer id, String application, String module, String class1, int timeout, int interval) {
+    public TimerSetting(Integer id, String application, String module, String class1, int timeout, int intervalTime) {
         this.id = id;
         this.application = application;
         this.module = module;
         this.class1 = class1;
         this.timeout = timeout;
-        this.interval = interval;
+        this.intervalTime = intervalTime;
     }
 
     public Integer getId() {
@@ -113,12 +113,12 @@ public class TimerSetting implements Serializable {
         this.timeout = timeout;
     }
 
-    public int getInterval() {
-        return interval;
+    public int getIntervalTime() {
+        return intervalTime;
     }
 
-    public void setInterval(int interval) {
-        this.interval = interval;
+    public void setIntervalTime(int intervalTime) {
+        this.intervalTime = intervalTime;
     }
 
     @Override
@@ -143,7 +143,7 @@ public class TimerSetting implements Serializable {
 
     @Override
     public String toString() {
-        return "com.r_terai.java.commonentity.TimerSetting[ id=" + id + " ]";
+        return "com.r_terai.java.ee.common.entity.TimerSetting[ id=" + id + " ]";
     }
     
 }

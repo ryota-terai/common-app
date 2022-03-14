@@ -6,6 +6,7 @@
 package com.r_terai.java.ee.common.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +17,8 @@ import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -32,7 +35,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "ObserverSetting.findByApplication", query = "SELECT o FROM ObserverSetting o WHERE o.application = :application"),
     @NamedQuery(name = "ObserverSetting.findByModule", query = "SELECT o FROM ObserverSetting o WHERE o.module = :module"),
     @NamedQuery(name = "ObserverSetting.findByMethod", query = "SELECT o FROM ObserverSetting o WHERE o.method = :method"),
-    @NamedQuery(name = "ObserverSetting.findByTimeout", query = "SELECT o FROM ObserverSetting o WHERE o.timeout = :timeout")})
+    @NamedQuery(name = "ObserverSetting.findByTimeout", query = "SELECT o FROM ObserverSetting o WHERE o.timeout = :timeout"),
+    @NamedQuery(name = "ObserverSetting.findByIntervalTime", query = "SELECT o FROM ObserverSetting o WHERE o.intervalTime = :intervalTime"),
+    @NamedQuery(name = "ObserverSetting.findByUpdateTime", query = "SELECT o FROM ObserverSetting o WHERE o.updateTime = :updateTime")})
 public class ObserverSetting implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -60,6 +65,12 @@ public class ObserverSetting implements Serializable {
     @Basic(optional = false)
     @Column(name = "TIMEOUT")
     private int timeout;
+    @Basic(optional = false)
+    @Column(name = "INTERVAL_TIME")
+    private int intervalTime;
+    @Column(name = "UPDATE_TIME")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updateTime;
 
     public ObserverSetting() {
     }
@@ -68,7 +79,7 @@ public class ObserverSetting implements Serializable {
         this.id = id;
     }
 
-    public ObserverSetting(Integer id, short enable, String application, String module, String class1, String method, int timeout) {
+    public ObserverSetting(Integer id, short enable, String application, String module, String class1, String method, int timeout, int intervalTime) {
         this.id = id;
         this.enable = enable;
         this.application = application;
@@ -76,6 +87,7 @@ public class ObserverSetting implements Serializable {
         this.class1 = class1;
         this.method = method;
         this.timeout = timeout;
+        this.intervalTime = intervalTime;
     }
 
     public Integer getId() {
@@ -134,6 +146,22 @@ public class ObserverSetting implements Serializable {
         this.timeout = timeout;
     }
 
+    public int getIntervalTime() {
+        return intervalTime;
+    }
+
+    public void setIntervalTime(int intervalTime) {
+        this.intervalTime = intervalTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -156,7 +184,7 @@ public class ObserverSetting implements Serializable {
 
     @Override
     public String toString() {
-        return "com.r_terai.java.commonentity.ObserverSetting[ id=" + id + " ]";
+        return "com.r_terai.java.ee.common.entity.ObserverSetting[ id=" + id + " ]";
     }
     
 }
