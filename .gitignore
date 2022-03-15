@@ -31,3 +31,4 @@ hs_err_pid*
 /lib/Util/target/
 /lib/COMMONEntity/target/
 /lib/COMMONEntityUtil/target/
+/lib/COMMONUtil/target/

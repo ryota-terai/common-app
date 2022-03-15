@@ -26,17 +26,17 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author r-terai
  */
 @Entity
-@Table(name = "OBSERVER_TARGET")
+@Table(name = "OBSERVER_RESULT")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "ObserverTarget.findAll", query = "SELECT o FROM ObserverTarget o"),
-    @NamedQuery(name = "ObserverTarget.findById", query = "SELECT o FROM ObserverTarget o WHERE o.id = :id"),
-    @NamedQuery(name = "ObserverTarget.findByApplication", query = "SELECT o FROM ObserverTarget o WHERE o.application = :application"),
-    @NamedQuery(name = "ObserverTarget.findByModule", query = "SELECT o FROM ObserverTarget o WHERE o.module = :module"),
-    @NamedQuery(name = "ObserverTarget.findByMethod", query = "SELECT o FROM ObserverTarget o WHERE o.method = :method"),
-    @NamedQuery(name = "ObserverTarget.findByStatus", query = "SELECT o FROM ObserverTarget o WHERE o.status = :status"),
-    @NamedQuery(name = "ObserverTarget.findByUpdateTime", query = "SELECT o FROM ObserverTarget o WHERE o.updateTime = :updateTime")})
-public class ObserverTarget implements Serializable {
+    @NamedQuery(name = "ObserverResult.findAll", query = "SELECT o FROM ObserverResult o"),
+    @NamedQuery(name = "ObserverResult.findById", query = "SELECT o FROM ObserverResult o WHERE o.id = :id"),
+    @NamedQuery(name = "ObserverResult.findByApplication", query = "SELECT o FROM ObserverResult o WHERE o.application = :application"),
+    @NamedQuery(name = "ObserverResult.findByModule", query = "SELECT o FROM ObserverResult o WHERE o.module = :module"),
+    @NamedQuery(name = "ObserverResult.findByMethod", query = "SELECT o FROM ObserverResult o WHERE o.method = :method"),
+    @NamedQuery(name = "ObserverResult.findByStatus", query = "SELECT o FROM ObserverResult o WHERE o.status = :status"),
+    @NamedQuery(name = "ObserverResult.findByUpdateTime", query = "SELECT o FROM ObserverResult o WHERE o.updateTime = :updateTime")})
+public class ObserverResult implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -68,14 +68,14 @@ public class ObserverTarget implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateTime;
 
-    public ObserverTarget() {
+    public ObserverResult() {
     }
 
-    public ObserverTarget(Integer id) {
+    public ObserverResult(Integer id) {
         this.id = id;
     }
 
-    public ObserverTarget(Integer id, String application, String module, String class1, String method, int status, Date updateTime) {
+    public ObserverResult(Integer id, String application, String module, String class1, String method, int status, Date updateTime) {
         this.id = id;
         this.application = application;
         this.module = module;
@@ -159,10 +159,10 @@ public class ObserverTarget implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ObserverTarget)) {
+        if (!(object instanceof ObserverResult)) {
             return false;
         }
-        ObserverTarget other = (ObserverTarget) object;
+        ObserverResult other = (ObserverResult) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -171,7 +171,7 @@ public class ObserverTarget implements Serializable {
 
     @Override
     public String toString() {
-        return "com.r_terai.java.ee.common.entity.ObserverTarget[ id=" + id + " ]";
+        return "com.r_terai.java.ee.common.entity.ObserverResult[ id=" + id + " ]";
     }
     
 }

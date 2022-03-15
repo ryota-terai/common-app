@@ -13,7 +13,7 @@ import org.apache.logging.log4j.LogManager;
  */
 public class Logger {
 
-    private org.apache.logging.log4j.Logger logger;
+    private final org.apache.logging.log4j.Logger logger;
 
     public enum Level {
         OFF,

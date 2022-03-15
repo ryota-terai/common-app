@@ -5,5 +5,6 @@
     <class>com.r_terai.java.ee.common.entity.TimerSetting</class>
     <class>com.r_terai.java.ee.common.entity.ObserverSetting</class>
     <class>com.r_terai.java.ee.common.entity.ObserverTarget</class>
+    <class>com.r_terai.java.ee.common.entity.ObserverResult</class>
   </persistence-unit>
 </persistence>

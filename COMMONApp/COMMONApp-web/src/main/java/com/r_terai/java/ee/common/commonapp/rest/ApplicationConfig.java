@@ -12,7 +12,7 @@ import javax.ws.rs.core.Application;
  *
  * @author r-terai
  */
-@javax.ws.rs.ApplicationPath("webresources")
+@javax.ws.rs.ApplicationPath("rest")
 public class ApplicationConfig extends Application {
 
     @Override
@@ -29,7 +29,7 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(com.r_terai.java.ee.common.commonapp.rest.GenericResource.class);
+        resources.add(com.r_terai.java.ee.common.commonapp.rest.ObserverResource.class);
     }
     
 }

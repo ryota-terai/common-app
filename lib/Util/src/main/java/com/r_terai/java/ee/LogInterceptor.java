@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.r_terai.java.util;
+package com.r_terai.java.ee;
 
+import com.r_terai.java.util.Logger;
+import com.r_terai.java.util.Util;
 import java.lang.reflect.Method;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.AroundTimeout;

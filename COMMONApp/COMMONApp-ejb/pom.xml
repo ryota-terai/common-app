@@ -22,18 +22,6 @@
     </properties>
     
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/com.mapbox.mapboxsdk/mapbox-sdk-geojson -->
-        <dependency>
-            <groupId>com.mapbox.mapboxsdk</groupId>
-            <artifactId>mapbox-sdk-geojson</artifactId>
-            <version>5.8.0</version>
-        </dependency>
-        <dependency>
-            <groupId>androidx.annotation</groupId>
-            <artifactId>annotation</artifactId>
-            <version>1.3.0</version>
-            <type>jar</type>
-        </dependency>
         <dependency>
             <groupId>com.r-terai.java</groupId>
             <artifactId>Util</artifactId>
@@ -48,6 +36,11 @@
             <groupId>com.r-terai.java.ee.common.entity</groupId>
             <artifactId>COMMONEntity</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>COMMONUtil</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>javax</groupId>
