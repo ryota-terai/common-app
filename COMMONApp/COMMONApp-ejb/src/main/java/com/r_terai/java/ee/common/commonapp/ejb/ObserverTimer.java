@@ -5,7 +5,7 @@
  */
 package com.r_terai.java.ee.common.commonapp.ejb;
 
-import com.rterai.java.ee.common.TimerEJB;
+import com.r_terai.java.ee.common.TimerEJB;
 import com.r_terai.java.ee.common.entity.ObserverSetting;
 import com.r_terai.java.ee.common.entity.ObserverTarget;
 import com.r_terai.java.ee.common.entity.util.COMMONEntityUtil;
