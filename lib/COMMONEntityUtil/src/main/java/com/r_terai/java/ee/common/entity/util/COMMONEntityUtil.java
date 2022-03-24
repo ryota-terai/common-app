@@ -54,11 +54,17 @@ public class COMMONEntityUtil {
             StackTraceElement[] elems = Thread.currentThread().getStackTrace();
             String className = elems[2].getClassName();
             String methodName = elems[2].getMethodName();
+            
+            kick(em, application, module, className, methodName, status, message, removeOldLog);
+        }
+
+        public static void kick(EntityManager em, String application, String module, String className, String methodName, int status, String message, boolean removeOldLog) throws NamingException {
             persist(em, application, module, className, methodName, status, message);
             logger.log(Logger.Level.INFO, "Application={};Module={};Class={};Method={}", application, module, className, methodName);
             if (removeOldLog) {
                 removeOldLog(em, application, module, className, methodName);
             }
+
         }
 
         public static void removeOldLog(EntityManager em, String application, String module, String _class, String method) {

@@ -5,6 +5,7 @@
  */
 package com.r_terai.java.ee.common.commonapp.ejb;
 
+import com.r_terai.java.ee.common.LogInterceptor;
 import com.r_terai.java.ee.common.TimerEJB;
 import com.r_terai.java.ee.common.entity.ObserverSetting;
 import com.r_terai.java.ee.common.entity.ObserverTarget;
@@ -16,6 +17,7 @@ import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.ejb.Timeout;
 import javax.ejb.Timer;
+import javax.interceptor.Interceptors;
 
 /**
  *
@@ -26,6 +28,8 @@ import javax.ejb.Timer;
 public class ObserverTimer extends TimerEJB {
 
     @Timeout
+    @Override
+    @Interceptors(LogInterceptor.class)
     public void timeout(Timer timer) {
         observe();
     }
