@@ -26,7 +26,7 @@ public class COMMONEntityUtil {
 
     public static class ObserverTargetUtil {
 
-        private static void persist(EntityManager em, String application, String module, String _class, String method, int status, String message) {
+        public static ObserverTarget persist(EntityManager em, String application, String module, String _class, String method, int status, String message) {
             ObserverTarget target = new ObserverTarget();
             target.setApplication(application);
             target.setModule(module);
@@ -36,6 +36,8 @@ public class COMMONEntityUtil {
             target.setMessage(message);
             target.setUpdateTime(new Date());
             em.persist(target);
+            em.flush();
+            return target;
         }
 
         public static List<ObserverTarget> getOrderByUpdateTimeDesc(EntityManager em, String application, String module, String _class, String method) {
@@ -93,36 +95,38 @@ public class COMMONEntityUtil {
 
     public static class ObserverResultUtil {
 
-        private static void persist(EntityManager em, String application, String module, String _class, String method, int status, String message) {
-            ObserverResult target = new ObserverResult();
-            target.setApplication(application);
-            target.setModule(module);
-            target.setClass1(_class);
-            target.setMethod(method);
-            target.setStatus(status);
-            target.setMessage(message);
-            target.setUpdateTime(new Date());
-            em.persist(target);
+        private static ObserverResult persist(EntityManager em, String application, String module, String _class, String method, int status, String message) {
+            ObserverResult result = new ObserverResult();
+            result.setApplication(application);
+            result.setModule(module);
+            result.setClass1(_class);
+            result.setMethod(method);
+            result.setStatus(status);
+            result.setMessage(message);
+            result.setUpdateTime(new Date());
+            em.persist(result);
+            em.flush();
+            return result;
         }
 
         private static List<ObserverResult> getOrderByUpdateTimeDesc(EntityManager em, String application, String module, String _class, String method) {
-            List<ObserverResult> targets = em.createNativeQuery("SELECT * FROM OBSERVER_RESULT WHERE APPLICATION = ?1 AND MODULE = ?2 AND CLASS = ?3 AND METHOD = ?4 ORDER BY UPDATE_TIME DESC", ObserverResult.class)
+            List<ObserverResult> results = em.createNativeQuery("SELECT * FROM OBSERVER_RESULT WHERE APPLICATION = ?1 AND MODULE = ?2 AND CLASS = ?3 AND METHOD = ?4 ORDER BY UPDATE_TIME DESC", ObserverResult.class)
                     .setParameter(1, application)
                     .setParameter(2, module)
                     .setParameter(3, _class)
                     .setParameter(4, method)
                     .getResultList();
-            return targets;
+            return results;
         }
 
         private static void removeOldLog(EntityManager em, String application, String module, String _class, String method) {
-            List<ObserverResult> targets = getOrderByUpdateTimeDesc(em, application, module, _class, method);
+            List<ObserverResult> results = getOrderByUpdateTimeDesc(em, application, module, _class, method);
             boolean first = true;
-            for (ObserverResult target : targets) {
+            for (ObserverResult result : results) {
                 if (first) {
                     first = false;
                 } else {
-                    em.remove(target);
+                    em.remove(result);
                 }
             }
         }

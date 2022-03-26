@@ -5,7 +5,9 @@
  */
 package com.r_terai.java.ee.common.commonapp.ejb;
 
+import com.r_terai.java.ee.common.ObserverItem;
 import com.r_terai.java.ee.common.entity.ObserverResult;
+import com.r_terai.java.ee.common.entity.ObserverTarget;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -17,4 +19,6 @@ import javax.ejb.Local;
 public interface ObserverEJBLocal {
 
     public List<ObserverResult> getResults();
+
+    public ObserverTarget record(ObserverItem item);
 }

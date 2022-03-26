@@ -5,7 +5,9 @@
  */
 package com.r_terai.java.ee.common.commonapp.ejb;
 
+import com.r_terai.java.ee.common.ObserverItem;
 import com.r_terai.java.ee.common.entity.ObserverResult;
+import com.r_terai.java.ee.common.entity.ObserverTarget;
 import com.r_terai.java.ee.common.entity.util.COMMONEntityUtil;
 import com.r_terai.java.util.Logger;
 import java.util.List;
@@ -33,6 +35,11 @@ public class ObserverEJB implements ObserverEJBLocal {
     @Override
     public List<ObserverResult> getResults() {
         return COMMONEntityUtil.ObserverResultUtil.getAll(em);
+    }
+
+    @Override
+    public ObserverTarget record(ObserverItem item) {
+        return COMMONEntityUtil.ObserverTargetUtil.persist(em, item.getApplication(), item.getModule(), item.getClass1(), item.getMethod(), item.getStatus(), item.getMessage());
     }
 
 }

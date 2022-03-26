@@ -5,18 +5,13 @@
  */
 package com.r_terai.java.ee.common;
 
-import com.r_terai.java.ee.common.entity.util.COMMONEntityUtil;
 import com.r_terai.java.util.Logger;
 import com.r_terai.java.util.Util;
 import java.lang.reflect.Method;
-import java.util.Date;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.AroundTimeout;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
-import javax.naming.NamingException;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -24,9 +19,6 @@ import javax.persistence.PersistenceContext;
  */
 @Interceptor
 public class LogInterceptor {
-
-    @PersistenceContext(unitName = "COMMONEntity")
-    private EntityManager em;
 
     private static final Logger logger = new Logger(LogInterceptor.class.getName());
 
@@ -48,14 +40,8 @@ public class LogInterceptor {
 //        logger.log(Logger.Level.DEBUG, "Application={};Module={};Class={};Method={}", application, module, cls.getName(), method.getName());
 //        logger.log(Logger.Level.TRACE, "Application={};Module={};Class={};Method={}", application, module, cls.getName(), method.getName());
 //        logger.log(Logger.Level.ALL, "Application={};Module={};Class={};Method={}", application, module, cls.getName(), method.getName());
-        try {
-            COMMONEntityUtil.ObserverTargetUtil.kick(em, application, module, cls.getName(), method.getName(), 200, (new Date()).toString(), false);
-        } catch (NamingException ex) {
-            logger.log(Logger.Level.SEVERE, null, ex);
-        }
 
         Object object = ctx.proceed();
-
         return object;
     }
 
@@ -67,14 +53,8 @@ public class LogInterceptor {
         Method method = ctx.getMethod();
 
         logger.log(Logger.Level.INFO, "Application={};Module={};Class={};Method={}", application, module, cls.getName(), method.getName());
-        try {
-            COMMONEntityUtil.ObserverTargetUtil.kick(em, application, module, cls.getName(), method.getName(), 200, (new Date()).toString(), false);
-        } catch (NamingException ex) {
-            logger.log(Logger.Level.SEVERE, null, ex);
-        }
 
         Object object = ctx.proceed();
-
         return object;
     }
 }
