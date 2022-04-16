@@ -5,6 +5,6 @@ COPY setup_payara.sh /opt/payara/setup_payara.sh
 COPY glassfish-resources.xml /opt/payara/glassfish-resources.xml
 COPY glassfish-resources2.xml /opt/payara/glassfish-resources2.xml
 COPY log4j2.xml /opt/payara/log4j2.xml
-COPY COMMONApp.ear /opt/payara/COMMONApp.ear
-COPY GISApp.ear /opt/payara/GISApp.ear
+#COPY COMMONApp.ear /opt/payara/COMMONApp.ear
+#COPY GISApp.ear /opt/payara/GISApp.ear
 RUN mkdir /opt/payara/logs
